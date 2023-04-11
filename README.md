@@ -5,4 +5,4 @@ dms是一项负责管理非k8s环境中prometheus容器规则的服务,解决原
 ```make docker-build```
 
 ## 制作二进制文件
-```make dms-server```
+```make build```
