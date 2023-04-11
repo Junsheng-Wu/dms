@@ -1,0 +1,29 @@
+kubernetes:
+  kubeconfig: /home/user/.kube/config
+monitoring:
+  endpoint: http://prometheus.emla-monitoring-system.svc.cluster.local:9090
+logging:
+  host: http://elasticsearch.emla-logging-system.svc.cluster.local:9200
+  indexPrefix: emla-logging
+alerting:
+  endpoint: http://alertmanager.emla-monitoring-system.svc.cluster.local:9093
+  resyncPeriod: 15s
+  resolveTimeout: 5m
+  quota:
+    alerts: 10000
+    customRules: 1000
+  namespace: emla-monitoring-system
+authentication:
+  mode: WebHook
+  webHook:
+    configFile: /etc/kubernetes/keystone_webhook_config.yaml
+  alertManager:
+    webHookPath: /apis/alerting/v1/ecns/alerts
+    bearerToken: 4c012fa4d0c2423087f03a2799561e70
+authorization:
+  mode: WebHook
+  webHook:
+    configFile: /etc/kubernetes/keystone_webhook_config.yaml
+  alertManager:
+    webHookPath: /apis/alerting/v1/ecns/alerts
+    bearerToken: 4c012fa4d0c2423087f03a2799561e70

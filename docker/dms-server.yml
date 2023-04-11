@@ -1,0 +1,16 @@
+services:
+  dms-server:
+    image: dms-server:v0.1.0
+    restart: always
+    container_name: dms-server
+    hostname: dms-server
+    environment:
+      - TZ=Asia/Shanghai
+    ports:
+      - 9200:9200
+    command:
+      --rule-path="/etc/monitor/prometheus/alerts.rules"
+      --prometheus-endpoint="172.28.0.1:9091"
+      --peer-address="172.28.0.1:9200,172.28.0.111:9200"
+    volumes:
+      - /etc/monitor:/etc/
